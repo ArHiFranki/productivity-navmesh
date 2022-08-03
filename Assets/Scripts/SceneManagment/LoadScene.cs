@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 namespace Productivity.SceneManagement
 {
+    // Loading Data and load the target Scene
+    // Displays loading progress by using a slider
     public class LoadScene : MonoBehaviour
     {
         [SerializeField] private GameObject loadingScreen;
