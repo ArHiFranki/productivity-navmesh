@@ -1,5 +1,6 @@
 using UnityEngine;
 using Productivity.Movement;
+using Productivity.Core;
 
 namespace Productivity.Combat
 {
@@ -7,7 +8,7 @@ namespace Productivity.Combat
     /// Implements combat system mechanics
     /// </summary>
     //[RequireComponent(typeof(Mover))]
-    public class Fighter : MonoBehaviour
+    public class Fighter : MonoBehaviour, IAction
     {
         [SerializeField] float weaponRange = 2f;
 
@@ -29,7 +30,7 @@ namespace Productivity.Combat
             }
             else
             {
-                myMover.Stop();
+                myMover.Cancel();
             }
         }
 
@@ -44,13 +45,14 @@ namespace Productivity.Combat
         /// <param name="combatTarget">Object which have an CombatTarget component</param>
         public void Attack(CombatTarget combatTarget)
         {
+            GetComponent<ActionScheduler>().StartAction(this);
             target = combatTarget.transform;
         }
 
         /// <summary>
         /// Cancel attack to target
         /// </summary>
-        public void CancelFighting()
+        public void Cancel()
         {
             target = null;
         }

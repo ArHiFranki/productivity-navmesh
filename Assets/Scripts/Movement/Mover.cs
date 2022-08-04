@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
-using Productivity.Combat;
+using Productivity.Core;
 
 namespace Productivity.Movement
 {
@@ -8,20 +8,18 @@ namespace Productivity.Movement
     /// Implements movement mechanics
     /// </summary>
     //[RequireComponent(typeof(NavMeshAgent))]
-    public class Mover : MonoBehaviour
+    public class Mover : MonoBehaviour, IAction
     {
         private NavMeshAgent myNavMeshAgent;
-        private Fighter myFighter;
 
         private void Awake()
         {
             myNavMeshAgent = GetComponent<NavMeshAgent>();
-            myFighter = GetComponent<Fighter>();
         }
 
         public void StartMoveAction(Vector3 destination)
         {
-            myFighter.CancelFighting();
+            GetComponent<ActionScheduler>().StartAction(this);
             MoveTo(destination);
         }
 
@@ -38,7 +36,7 @@ namespace Productivity.Movement
         /// <summary>
         /// Stop moving object
         /// </summary>
-        public void Stop()
+        public void Cancel()
         {
             myNavMeshAgent.isStopped = true;
         }
