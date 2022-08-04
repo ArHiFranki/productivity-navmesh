@@ -43,6 +43,8 @@ namespace Productivity.Combat
 
         private void AttackBehaviour()
         {
+            if (target == null) return;
+
             transform.LookAt(target.transform);
             if (timeSinceLastAttack > timeBetweenAttacks)
             {
