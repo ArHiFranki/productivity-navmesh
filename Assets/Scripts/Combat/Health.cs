@@ -26,6 +26,7 @@ namespace Productivity.Combat
             if (isDead) return;
 
             isDead = true;
+            gameObject.SetActive(false);
         }
     }
 }

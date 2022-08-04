@@ -8,57 +8,47 @@ namespace Productivity.Bot
     /// Implements the facade pattern for controlling the bot and the basic logic of the bot's behavior
     /// </summary>
     [RequireComponent(typeof(Mover))]
+    [RequireComponent(typeof(Fighter))]
+    [RequireComponent(typeof(TargetFinder))]
     public class BotController : MonoBehaviour
     {
         private Mover myMover;
+        private Fighter myFighter;
+        private TargetFinder myTargetFinder;
 
         private void Awake()
         {
             myMover = GetComponent<Mover>();
+            myFighter = GetComponent<Fighter>();
+            myTargetFinder = GetComponent<TargetFinder>();
         }
 
         private void Update()
         {
             if (InteractWithCombat()) return;
-            if (InteractWithMovement()) return;
+            InteractWithMovement();
         }
 
         private bool InteractWithCombat()
         {
-            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
-            foreach (RaycastHit hit in hits)
-            {
-                CombatTarget target = hit.transform.GetComponent<CombatTarget>();
-                if (!GetComponent<Fighter>().CanAttack(target)) continue;
-
-                if (Input.GetMouseButtonDown(0))
-                {
-                    GetComponent<Fighter>().Attack(target);
-                }
-                return true;
-            }
-            return false;
-        }
-
-        private bool InteractWithMovement()
-        {
             RaycastHit hit;
-            bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
-
-            if (hasHit)
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit))
             {
-                if (Input.GetMouseButton(0))
+                if (hit.transform.TryGetComponent(out CombatTarget target))
                 {
-                    myMover.StartMoveAction(hit.point);
+                    if (myFighter.CanAttack(target))
+                    {
+                        myFighter.Attack(target);
+                        return true;
+                    }
                 }
-                return true;
             }
             return false;
         }
 
-        private static Ray GetMouseRay()
+        private void InteractWithMovement()
         {
-            return Camera.main.ScreenPointToRay(Input.mousePosition);
+            myMover.StartMoveAction(myTargetFinder.FindClosestCombatTargetPosition());
         }
     }
 }
