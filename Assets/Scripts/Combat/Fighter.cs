@@ -10,10 +10,13 @@ namespace Productivity.Combat
     //[RequireComponent(typeof(Mover))]
     public class Fighter : MonoBehaviour, IAction
     {
-        [SerializeField] float weaponRange = 2f;
+        [SerializeField] private float weaponRange = 2f;
+        [SerializeField] private float timeBetweenAttacks = 1f;
+        [SerializeField] private float weaponDamage = 5f;
 
         private Transform target;
         private Mover myMover;
+        private float timeSinceLastAttack = 0;
 
         private void Awake()
         {
@@ -22,6 +25,8 @@ namespace Productivity.Combat
 
         private void Update()
         {
+            timeSinceLastAttack += Time.deltaTime;
+
             if (target == null) return;
 
             if (!GetIsInRange())
@@ -31,6 +36,17 @@ namespace Productivity.Combat
             else
             {
                 myMover.Cancel();
+                AttackBehaviour();
+            }
+        }
+
+        private void AttackBehaviour()
+        {
+            if (timeSinceLastAttack > timeBetweenAttacks)
+            {
+                timeSinceLastAttack = 0;
+                Health healthComponent = target.GetComponent<Health>();
+                healthComponent.TakeDamage(weaponDamage);
             }
         }
 

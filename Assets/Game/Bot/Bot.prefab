@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 9092002365295188228}
   - component: {fileID: 8742878936885292630}
   - component: {fileID: 2676033442151828709}
+  - component: {fileID: 1796399765901336881}
   - component: {fileID: 233392200}
   m_Layer: 0
   m_Name: Bot
@@ -150,6 +151,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: abebdca90a4be06418d3f02c252f6a78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1796399765901336881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7158450288863730320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c326676e5b5504799a4bfac022f2a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!195 &233392200
