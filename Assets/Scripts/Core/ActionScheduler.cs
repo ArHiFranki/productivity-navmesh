@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace Productivity.Core
 {
+    /// <summary>
+    /// Impliments action shedule
+    /// </summary>
     public class ActionScheduler : MonoBehaviour
     {
         private IAction currentAction;

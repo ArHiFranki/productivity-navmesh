@@ -4,6 +4,9 @@ using UnityEngine.AI;
 
 namespace Productivity.Bot
 {
+    /// <summary>
+    /// Implements target finding system with using NavMesh
+    /// </summary>
     [RequireComponent(typeof(NavMeshAgent))]
     public class TargetFinder : MonoBehaviour
     {
@@ -14,6 +17,10 @@ namespace Productivity.Bot
             myAgent = GetComponent<NavMeshAgent>();
         }
 
+        /// <summary>
+        /// Find closest target avaliable for combat
+        /// </summary>
+        /// <returns>Vector3 closest target position</returns>
         public Vector3 FindClosestCombatTargetPosition()
         {
             CombatTarget closestCombatTarget = null;

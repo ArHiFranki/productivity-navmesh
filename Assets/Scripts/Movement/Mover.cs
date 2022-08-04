@@ -7,7 +7,7 @@ namespace Productivity.Movement
     /// <summary>
     /// Implements movement mechanics
     /// </summary>
-    //[RequireComponent(typeof(NavMeshAgent))]
+    [RequireComponent(typeof(NavMeshAgent))]
     public class Mover : MonoBehaviour, IAction
     {
         private NavMeshAgent myNavMeshAgent;
@@ -17,6 +17,10 @@ namespace Productivity.Movement
             myNavMeshAgent = GetComponent<NavMeshAgent>();
         }
 
+        /// <summary>
+        /// Start new move action
+        /// </summary>
+        /// <param name="destination">Set the Vector3 destination</param>
         public void StartMoveAction(Vector3 destination)
         {
             GetComponent<ActionScheduler>().StartAction(this);

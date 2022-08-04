@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace Productivity.Combat
 {
+    /// <summary>
+    /// Implements health mechanic
+    /// </summary>
     public class Health : MonoBehaviour
     {
         [SerializeField] private float health = 100f;
@@ -10,6 +13,10 @@ namespace Productivity.Combat
 
         public bool IsDead => isDead;
 
+        /// <summary>
+        /// Reduce bot health by taking damage
+        /// </summary>
+        /// <param name="damage">Damage amount</param>
         public void TakeDamage(float damage)
         {
             health = Mathf.Max(health - damage, 0);
