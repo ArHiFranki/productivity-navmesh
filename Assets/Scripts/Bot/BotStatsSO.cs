@@ -2,7 +2,9 @@ using UnityEngine;
 
 namespace Productivity.Bot
 {
-    // Bot stats configuration template
+    /// <summary>
+    /// Bot stats configuration template
+    /// </summary>
     [CreateAssetMenu(menuName = "Bot Stats", fileName = "New Bot Stats")]
     public class BotStatsSO : ScriptableObject
     {
