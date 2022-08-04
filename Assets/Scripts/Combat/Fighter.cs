@@ -14,7 +14,7 @@ namespace Productivity.Combat
         [SerializeField] private float timeBetweenAttacks = 1f;
         [SerializeField] private float weaponDamage = 5f;
 
-        private Transform target;
+        private Health target;
         private Mover myMover;
         private float timeSinceLastAttack = 0;
 
@@ -28,10 +28,11 @@ namespace Productivity.Combat
             timeSinceLastAttack += Time.deltaTime;
 
             if (target == null) return;
+            if (target.IsDead) return;
 
             if (!GetIsInRange())
             {
-                myMover.MoveTo(target.position);
+                myMover.MoveTo(target.transform.position);
             }
             else
             {
@@ -45,14 +46,13 @@ namespace Productivity.Combat
             if (timeSinceLastAttack > timeBetweenAttacks)
             {
                 timeSinceLastAttack = 0;
-                Health healthComponent = target.GetComponent<Health>();
-                healthComponent.TakeDamage(weaponDamage);
+                target.TakeDamage(weaponDamage);
             }
         }
 
         private bool GetIsInRange()
         {
-            return Vector3.Distance(transform.position, target.position) < weaponRange;
+            return Vector3.Distance(transform.position, target.transform.position) < weaponRange;
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Productivity.Combat
         public void Attack(CombatTarget combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
-            target = combatTarget.transform;
+            target = combatTarget.GetComponent<Health>();
         }
 
         /// <summary>
