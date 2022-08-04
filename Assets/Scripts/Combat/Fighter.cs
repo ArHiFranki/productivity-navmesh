@@ -57,6 +57,21 @@ namespace Productivity.Combat
         }
 
         /// <summary>
+        /// Determines whether it is possible to attack the target
+        /// </summary>
+        /// <param name="combatTarget">Object which have an CombatTarget component</param>
+        /// <returns>return true if target can be attacked</returns>
+        public bool CanAttack(CombatTarget combatTarget)
+        {
+            if (combatTarget == null)
+            {
+                return false;
+            }
+            Health targetToTest = combatTarget.GetComponent<Health>();
+            return targetToTest != null && !targetToTest.IsDead;
+        }
+
+        /// <summary>
         /// Attack the target
         /// </summary>
         /// <param name="combatTarget">Object which have an CombatTarget component</param>
