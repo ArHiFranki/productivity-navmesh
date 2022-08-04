@@ -49,7 +49,7 @@ namespace Productivity.Bot
             {
                 if (Input.GetMouseButton(0))
                 {
-                    myMover.MoveTo(hit.point);
+                    myMover.StartMoveAction(hit.point);
                 }
                 return true;
             }
