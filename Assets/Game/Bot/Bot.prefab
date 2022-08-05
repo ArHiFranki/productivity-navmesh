@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 1796399765901336881}
   - component: {fileID: 8551345025388583384}
   - component: {fileID: 1153892836745625653}
+  - component: {fileID: -4462882141415186858}
   - component: {fileID: 233392200}
   m_Layer: 0
   m_Name: Bot
@@ -195,6 +196,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7630efff64ef54fa255a9200e291a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-4462882141415186858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7158450288863730320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf4162e104585c47bb21e3c0f8ddfdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!195 &233392200
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -228,6 +241,10 @@ PrefabInstance:
       propertyPath: healthComponent
       value: 
       objectReference: {fileID: 1796399765901336881}
+    - target: {fileID: 1492945103305784646, guid: 4454d03393109b24c81a9b8b49f88171, type: 3}
+      propertyPath: scoreKeeperComponent
+      value: 
+      objectReference: {fileID: -4462882141415186858}
     - target: {fileID: 3583620544741336127, guid: 4454d03393109b24c81a9b8b49f88171, type: 3}
       propertyPath: m_RootOrder
       value: 0

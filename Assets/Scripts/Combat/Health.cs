@@ -17,14 +17,16 @@ namespace Productivity.Combat
         /// <summary>
         /// Reduce bot health by taking damage
         /// </summary>
+        /// <param name="instigator">Instagator of damage</param>
         /// <param name="damage">Damage amount</param>
-        public void TakeDamage(float damage)
+        public void TakeDamage(GameObject instigator, float damage)
         {
             currentHealth = Mathf.Max(currentHealth - damage, 0);
 
             if (currentHealth == 0)
             {
                 Die();
+                instigator.GetComponent<ScoreKeeper>().AddScore();
             }
         }
 

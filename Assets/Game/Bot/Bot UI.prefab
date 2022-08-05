@@ -296,7 +296,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthComponent: {fileID: 0}
+  scoreKeeperComponent: {fileID: 0}
   healthText: {fileID: 5076970386603547477}
+  scoreText: {fileID: 2116695383033283417}
 --- !u!1 &6987983961573430460
 GameObject:
   m_ObjectHideFlags: 0

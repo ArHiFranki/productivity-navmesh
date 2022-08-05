@@ -49,7 +49,7 @@ namespace Productivity.Combat
             if (timeSinceLastAttack > timeBetweenAttacks)
             {
                 timeSinceLastAttack = 0;
-                target.TakeDamage(damage);
+                target.TakeDamage(gameObject, damage);
             }
         }
 
