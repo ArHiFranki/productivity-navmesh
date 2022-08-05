@@ -1,4 +1,5 @@
 using UnityEngine;
+using Productivity.UI;
 
 namespace Productivity.Combat
 {
@@ -9,6 +10,7 @@ namespace Productivity.Combat
     {
         [SerializeField] private float currentHealth = 100f;
 
+        private DisplayLeaderboard myLeaderboard;
         private bool isDead = false;
 
         public bool IsDead => isDead;
@@ -28,6 +30,7 @@ namespace Productivity.Combat
                 Die();
                 instigator.GetComponent<ScoreKeeper>().AddScore();
                 instigator.GetComponent<Fighter>().IncreaseDamage();
+                myLeaderboard.UpdateLeaderboard();
             }
         }
 
@@ -47,6 +50,15 @@ namespace Productivity.Combat
         {
             currentHealth = value;
             isDead = false;
+        }
+
+        /// <summary>
+        /// Initialize leaderboard component
+        /// </summary>
+        /// <param name="leaderboard">DisplayLeaderboard object</param>
+        public void InitLeaderboard(DisplayLeaderboard leaderboard)
+        {
+            myLeaderboard = leaderboard;
         }
     }
 }

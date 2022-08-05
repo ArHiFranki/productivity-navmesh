@@ -27,7 +27,6 @@ namespace Productivity.Combat
         private void Update()
         {
             timeSinceLastAttack += Time.deltaTime;
-
             if (target == null) return;
             if (target.IsDead) return;
 

@@ -17,12 +17,18 @@ namespace Productivity.Bot
             myAgent = GetComponent<NavMeshAgent>();
         }
 
+        private void OnEnable()
+        {
+            myAgent.enabled = false;
+        }
+
         /// <summary>
         /// Find closest target avaliable for combat
         /// </summary>
         /// <returns>Vector3 closest target position</returns>
         public Vector3 FindClosestCombatTargetPosition()
         {
+            myAgent.enabled = true;
             CombatTarget closestCombatTarget = null;
             float closestTargetDistance = float.MaxValue;
             NavMeshPath path = new NavMeshPath();
