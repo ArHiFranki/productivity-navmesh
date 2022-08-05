@@ -13,6 +13,7 @@ namespace Productivity.Combat
         [SerializeField] private float attackRange = 2f;
         [SerializeField] private float timeBetweenAttacks = 1f;
         [SerializeField] private int damage = 5;
+        [SerializeField] private int damageIncrement = 2;
 
         private Health target;
         private Mover myMover;
@@ -49,7 +50,7 @@ namespace Productivity.Combat
             if (timeSinceLastAttack > timeBetweenAttacks)
             {
                 timeSinceLastAttack = 0;
-                target.TakeDamage(damage);
+                target.TakeDamage(gameObject, damage);
             }
         }
 
@@ -98,6 +99,14 @@ namespace Productivity.Combat
         public void SetDamage(int value)
         {
             damage = value;
+        }
+
+        /// <summary>
+        /// Increase damage by damageIncrement after kill another bot
+        /// </summary>
+        public void IncreaseDamage()
+        {
+            damage += damageIncrement;
         }
     }
 }

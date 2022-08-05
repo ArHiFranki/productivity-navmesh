@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using Productivity.Combat;
 using Productivity.Movement;
 
@@ -38,6 +39,14 @@ namespace Productivity.Spawner
             }
         }
 
+        private void TryCreateObjectFromPool(List<GameObject> objectPool, Vector3 position)
+        {
+            if (TryGetObject(objectPool, out GameObject objectFromPool))
+            {
+                SetObject(objectFromPool, position);
+            }
+        }
+
         private Vector3 GenerateSpawnPointPosition()
         {           
             int index = Random.Range(0, spawnPoints.Count);
@@ -62,8 +71,18 @@ namespace Productivity.Spawner
             float randomMoveSpeedValue = Random.Range(botStatsConfig.MoveSpeedMin, botStatsConfig.MoveSpeedMax);
             spawnObject.GetComponent<Mover>().SetMoveSpeed(randomMoveSpeedValue);
 
+            spawnObject.GetComponent<ScoreKeeper>().ResetScore();
             spawnObject.SetActive(true);
             spawnObject.transform.position = spawnPoint;
+        }
+
+        /// <summary>
+        /// Spawn bot in a given position
+        /// </summary>
+        /// <param name="spawnPosition">position to spawn</param>
+        public void SpawnBotByClick(Vector3 spawnPosition)
+        {
+            TryCreateObjectFromPool(botPool, spawnPosition);
         }
     }
 }
