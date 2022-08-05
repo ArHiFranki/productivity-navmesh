@@ -44,5 +44,14 @@ namespace Productivity.Movement
         {
             myNavMeshAgent.isStopped = true;
         }
+
+        /// <summary>
+        /// Set bot move speed
+        /// </summary>
+        /// <param name="value">Move speed value</param>
+        public void SetMoveSpeed(float value)
+        {
+            myNavMeshAgent.speed = value;
+        }
     }
 }

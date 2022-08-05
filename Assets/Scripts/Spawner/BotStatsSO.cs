@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Productivity.Bot
+namespace Productivity.Spawner
 {
     /// <summary>
     /// Bot stats configuration template
@@ -8,15 +8,15 @@ namespace Productivity.Bot
     [CreateAssetMenu(menuName = "Bot Stats", fileName = "New Bot Stats")]
     public class BotStatsSO : ScriptableObject
     {
-        [SerializeField] private int moveSpeedMin;
-        [SerializeField] private int moveSpeedMax;
+        [SerializeField] private float moveSpeedMin;
+        [SerializeField] private float moveSpeedMax;
         [SerializeField] private int damageMin;
         [SerializeField] private int damageMax;
         [SerializeField] private int healthMin;
         [SerializeField] private int healthMax;
 
-        public int MoveSpeedMin => moveSpeedMin;
-        public int MoveSpeedMax => moveSpeedMax;
+        public float MoveSpeedMin => moveSpeedMin;
+        public float MoveSpeedMax => moveSpeedMax;
         public int DamageMin => damageMin;
         public int DamageMax => damageMax;
         public int HealthMin => healthMin;

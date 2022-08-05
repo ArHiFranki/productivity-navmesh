@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e80c4687c20b38b4581a833fd7dc3a82, type: 3}
   m_Name: Bot Stats Config
   m_EditorClassIdentifier: 
-  moveSpeedMin: 2
+  moveSpeedMin: 3
   moveSpeedMax: 10
-  damageMin: 1
-  damageMax: 4
-  healthMin: 5
-  healthMax: 20
+  damageMin: 3
+  damageMax: 10
+  healthMin: 12
+  healthMax: 30

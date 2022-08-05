@@ -7,7 +7,7 @@ namespace Productivity.Combat
     /// </summary>
     public class Health : MonoBehaviour
     {
-        [SerializeField] private float health = 100f;
+        [SerializeField] private float currentHealth = 100f;
 
         private bool isDead = false;
 
@@ -19,10 +19,9 @@ namespace Productivity.Combat
         /// <param name="damage">Damage amount</param>
         public void TakeDamage(float damage)
         {
-            health = Mathf.Max(health - damage, 0);
-            Debug.Log(health);
+            currentHealth = Mathf.Max(currentHealth - damage, 0);
 
-            if (health == 0)
+            if (currentHealth == 0)
             {
                 Die();
             }
@@ -34,6 +33,16 @@ namespace Productivity.Combat
 
             isDead = true;
             gameObject.SetActive(false);
+        }
+
+        /// <summary>
+        /// Set bot health and restore isDead condition
+        /// </summary>
+        /// <param name="value">healh value</param>
+        public void SetHealth(int value)
+        {
+            currentHealth = value;
+            isDead = false;
         }
     }
 }
