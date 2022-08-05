@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Productivity.Combat;
+using Productivity.Movement;
 
 namespace Productivity.Spawner
 {
@@ -51,6 +53,15 @@ namespace Productivity.Spawner
 
         private void SetObject(GameObject spawnObject, Vector3 spawnPoint)
         {
+            int randomHealthValue = Random.Range(botStatsConfig.HealthMin, botStatsConfig.HealthMax);
+            spawnObject.GetComponent<Health>().SetHealth(randomHealthValue);
+
+            int randomDamageValue = Random.Range(botStatsConfig.DamageMin, botStatsConfig.DamageMax);
+            spawnObject.GetComponent<Fighter>().SetDamage(randomDamageValue);
+
+            float randomMoveSpeedValue = Random.Range(botStatsConfig.MoveSpeedMin, botStatsConfig.MoveSpeedMax);
+            spawnObject.GetComponent<Mover>().SetMoveSpeed(randomMoveSpeedValue);
+
             spawnObject.SetActive(true);
             spawnObject.transform.position = spawnPoint;
         }
