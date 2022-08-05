@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Productivity.Bot
+namespace Productivity.Spawner
 {
     /// <summary>
     /// Bot stats configuration template

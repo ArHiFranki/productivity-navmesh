@@ -20,7 +20,6 @@ namespace Productivity.Combat
         public void TakeDamage(float damage)
         {
             health = Mathf.Max(health - damage, 0);
-            Debug.Log(health);
 
             if (health == 0)
             {
@@ -34,6 +33,14 @@ namespace Productivity.Combat
 
             isDead = true;
             gameObject.SetActive(false);
+        }
+
+        /// <summary>
+        /// Restore isDead condition for the pool 
+        /// </summary>
+        public void RestoreIsDeadCondition()
+        {
+            isDead = false;
         }
     }
 }
