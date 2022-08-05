@@ -71,6 +71,7 @@ namespace Productivity.Spawner
             float randomMoveSpeedValue = Random.Range(botStatsConfig.MoveSpeedMin, botStatsConfig.MoveSpeedMax);
             spawnObject.GetComponent<Mover>().SetMoveSpeed(randomMoveSpeedValue);
 
+            spawnObject.GetComponent<ScoreKeeper>().ResetScore();
             spawnObject.SetActive(true);
             spawnObject.transform.position = spawnPoint;
         }
