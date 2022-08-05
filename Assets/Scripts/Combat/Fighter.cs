@@ -7,12 +7,12 @@ namespace Productivity.Combat
     /// <summary>
     /// Implements combat system mechanics
     /// </summary>
-    //[RequireComponent(typeof(Mover))]
+    [RequireComponent(typeof(Mover))]
     public class Fighter : MonoBehaviour, IAction
     {
-        [SerializeField] private float weaponRange = 2f;
+        [SerializeField] private float attackRange = 2f;
         [SerializeField] private float timeBetweenAttacks = 1f;
-        [SerializeField] private float weaponDamage = 5f;
+        [SerializeField] private int damage = 5;
 
         private Health target;
         private Mover myMover;
@@ -49,13 +49,13 @@ namespace Productivity.Combat
             if (timeSinceLastAttack > timeBetweenAttacks)
             {
                 timeSinceLastAttack = 0;
-                target.TakeDamage(weaponDamage);
+                target.TakeDamage(damage);
             }
         }
 
         private bool GetIsInRange()
         {
-            return Vector3.Distance(transform.position, target.transform.position) < weaponRange;
+            return Vector3.Distance(transform.position, target.transform.position) < attackRange;
         }
 
         /// <summary>
@@ -89,6 +89,15 @@ namespace Productivity.Combat
         public void Cancel()
         {
             target = null;
+        }
+
+        /// <summary>
+        /// Set bot damage
+        /// </summary>
+        /// <param name="value">Damage value</param>
+        public void SetDamage(int value)
+        {
+            damage = value;
         }
     }
 }
