@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Productivity.UI;
+using Productivity.Combat;
 
 namespace Productivity.Spawner
 {
@@ -13,6 +15,8 @@ namespace Productivity.Spawner
         [SerializeField] private GameObject botPrefab;
         [SerializeField] private int botPoolCapacity;
 
+        [SerializeField] protected DisplayLeaderboard leaderboard;
+
         protected List<GameObject> botPool = new List<GameObject>();
 
         private void Initialize(GameObject prefab, List<GameObject> pool, GameObject container, int capacity)
@@ -21,6 +25,7 @@ namespace Productivity.Spawner
             {
                 GameObject spawned = Instantiate(prefab, container.transform);
                 spawned.SetActive(false);
+                spawned.GetComponent<Health>().InitLeaderboard(leaderboard);
                 pool.Add(spawned);
             }
         }

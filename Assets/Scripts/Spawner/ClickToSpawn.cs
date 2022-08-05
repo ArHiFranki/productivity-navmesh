@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Productivity.Spawner
 {
@@ -20,8 +21,10 @@ namespace Productivity.Spawner
             }
         }
 
-        private void SpawnToCursor()
+        public void SpawnToCursor()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
+
             RaycastHit[] hits = Physics.RaycastAll(Camera.main.ScreenPointToRay(Input.mousePosition));
             foreach (RaycastHit hit in hits)
             {
