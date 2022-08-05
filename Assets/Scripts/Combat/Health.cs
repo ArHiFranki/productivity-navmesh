@@ -27,6 +27,7 @@ namespace Productivity.Combat
             {
                 Die();
                 instigator.GetComponent<ScoreKeeper>().AddScore();
+                instigator.GetComponent<Fighter>().IncreaseDamage();
             }
         }
 
