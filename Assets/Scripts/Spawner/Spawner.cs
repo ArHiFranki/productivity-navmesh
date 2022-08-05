@@ -32,7 +32,6 @@ namespace Productivity.Spawner
         {
             if (TryGetObject(objectPool, out GameObject objectFromPool))
             {
-                Vector3 tmpPosition = GenerateSpawnPointPosition();
                 SetObject(objectFromPool, GenerateSpawnPointPosition());
             }
         }
