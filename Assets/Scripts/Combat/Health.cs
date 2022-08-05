@@ -12,6 +12,7 @@ namespace Productivity.Combat
         private bool isDead = false;
 
         public bool IsDead => isDead;
+        public float CurrentHealth => currentHealth;
 
         /// <summary>
         /// Reduce bot health by taking damage
